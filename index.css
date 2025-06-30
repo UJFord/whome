@@ -15,7 +15,7 @@ body {
     padding: 2rem;
 }
 
-.term-container {
+.terminal {
     font-family: "Cascadia Mono", sans-serif;
     background: #3b3b3b;
     border-radius: 1rem;
@@ -39,6 +39,6 @@ body {
     outline: none;
 }
 
-.input-caret {
+.caret {
     margin-right: .5rem;
 }
