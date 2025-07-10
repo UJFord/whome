@@ -1,8 +1,42 @@
 // focus into input-able element on startup
 window.addEventListener("load", function () {
-    let firstCommand = document.querySelector('.input-active')
-    focusInput(firstCommand)
+    let repeatCount = 1000
+    for (let i = 0; i < repeatCount; i++) {
+        setTimeout(()=>{
+            newInput("testing")
+        }, (100 * (i + 1))
+        )
+    }
 })
+
+function newInput(templateInput) {
+    let active = this.document.querySelector(".input-active")
+    active.classList.remove("input-active", "active-border")
+    active.removeAttribute("contenteditable")
+    active.removeAttribute("spellcheck")
+
+    console.log(active.textContent.toString())
+
+    let newCmd = this.document.createElement("div")
+    newCmd.classList.add("input-cmd",)
+    newCmd.setAttribute("spellcheck", "false")
+
+    let caret = this.document.createElement("span")
+    caret.classList.add("caret")
+    caret.textContent = `>`
+    newCmd.appendChild(caret)
+
+    let inputTxt = this.document.createElement("div")
+    inputTxt.classList.add("active-border", "input-active")
+    inputTxt.setAttribute("contenteditable", "true")
+    inputTxt.textContent = "testing"
+    newCmd.appendChild(inputTxt)
+
+    let terminal = this.document.querySelector(".terminal")
+    terminal.appendChild(newCmd)
+
+    focusInput(inputTxt)
+}
 
 function focusInput(el) {
     el.focus()
@@ -18,69 +52,14 @@ function focusInput(el) {
 window.addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
-
+        // prevent new line by default
         event.preventDefault()
-
-        let active = this.document.querySelector(".input-active")
-        active.classList.remove("input-active", "active-border")
-        active.removeAttribute("contenteditable")
-        active.removeAttribute("spellcheck")
-
-        console.log(active.textContent.toString())
-
-        let newCmd = this.document.createElement("div")
-        newCmd.classList.add("input-cmd", "input-active", "active-border")
-        newCmd.setAttribute("contenteditable", "true")
-        newCmd.setAttribute("spellcheck", "false")
-        
-        let caret = this.document.createElement("span")
-        caret.classList.add("caret")
-        caret.textContent = ">"
-
-        newCmd.appendChild(caret)
-        let textNode = this.document.createTextNode("")
-        newCmd.appendChild(textNode)
-
-        let terminal = this.document.querySelector(".terminal")
-        terminal.appendChild(newCmd)
-
-        focusInput(newCmd)
-
+        newInput("")
     }
 })
 
-// add input after submit
-// window.addEventListener("", function (event) {
-
-//     let marker = "<span class='input-caret'>></span>"
-//     let newCmd = "<span class='input-txt'></span>"
-
-//     if (event.key === "Enter") {
-
-//         event.preventDefault()
-
-//         let inputElement = document.querySelector(".input-cmd.input-active")
-//         let inputCmd = inputElement.textContent.toString()
-//         inputElement.classList.remove("input-active")
-//         inputElement.removeAttribute("contenteditable")
-
-//         let index = inputCmd.indexOf(marker)
-//         if (index !== -1) {
-//             inputCmd = inputCmd.substring(index + marker.length)
-//         }
-
-//         let newElement = document.createElement("div")
-//         newElement.classList.add("input-cmd", "input-active", "active-border")
-//         newElement.setAttribute("contenteditable", "true")
-//         newElement.setAttribute("spellcheck", "false")
-//         newElement.innerHTML = marker
-
-//         let termContainer = document.querySelector(".term-container")
-//         termContainer.appendChild(newElement)
-
-
-//         console.log(inputCmd)
-//         focusInput(newCmd)
-//         console.log(newElement)
-//     }
-// })
+// focus into input onclick anywhere on the page
+window.addEventListener("click", function () {
+    let inputActive = document.querySelector(".input-active")
+    focusInput(inputActive)
+})
