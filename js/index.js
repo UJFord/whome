@@ -1,12 +1,15 @@
+let currentInput = "";
+
 // focus into input-able element on startup
 window.addEventListener("load", function () {
-    let repeatCount = 1000
-    for (let i = 0; i < repeatCount; i++) {
-        setTimeout(()=>{
-            newInput("testing")
-        }, (100 * (i + 1))
-        )
-    }
+    // let repeatCount = 50
+    // for (let i = 0; i < repeatCount; i++) {
+    //     setTimeout(() => {
+    //         newInput("testing")
+    //     }, (100 * (i + 1))
+    //     )
+    // }
+    newInput()
 })
 
 function newInput(templateInput) {
@@ -15,7 +18,10 @@ function newInput(templateInput) {
     active.removeAttribute("contenteditable")
     active.removeAttribute("spellcheck")
 
-    console.log(active.textContent.toString())
+    currentInput = active.textContent.toString()
+    console.log(currentInput.split(/\s+/))
+
+    // validateCmd(currentInput)
 
     let newCmd = this.document.createElement("div")
     newCmd.classList.add("input-cmd",)
@@ -29,7 +35,7 @@ function newInput(templateInput) {
     let inputTxt = this.document.createElement("div")
     inputTxt.classList.add("active-border", "input-active")
     inputTxt.setAttribute("contenteditable", "true")
-    inputTxt.textContent = "testing"
+    inputTxt.textContent = templateInput
     newCmd.appendChild(inputTxt)
 
     let terminal = this.document.querySelector(".terminal")
@@ -49,17 +55,35 @@ function focusInput(el) {
     sel.addRange(range)
 }
 
+let terminalContainer = document.querySelector(".terminal-container")
+terminalContainer.addEventListener("click", function () {
+    let inputActive = document.querySelector(".input-active")
+    focusInput(inputActive)
+})
+
+let terminal = document.querySelector(".terminal")
+terminal.addEventListener("click", function () {
+    let inputActive = document.querySelector(".input-active")
+    focusInput(inputActive)
+})
+
+let inputCmd = document.querySelector(".input-cmd")
+inputCmd.addEventListener("click", function () {
+    let inputActive = document.querySelector(".input-active")
+    focusInput(inputActive)
+})
+
+
 window.addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
         // prevent new line by default
         event.preventDefault()
-        newInput("")
+        newInput()
     }
 })
 
-// focus into input onclick anywhere on the page
-window.addEventListener("click", function () {
-    let inputActive = document.querySelector(".input-active")
-    focusInput(inputActive)
-})
+function validateCmd(input) {
+    let args = input.split(/\s/)
+    console.log(args)
+}
