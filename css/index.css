@@ -73,6 +73,7 @@ body {
 
     animation: changingTextBlur 0.2s linear infinite;
 }
+
 @keyframes changingTextBlur {
     0% {
         filter: blur(0.05rem);
@@ -129,4 +130,8 @@ body {
 .caret {
     margin-right: .5rem;
     /* border: 2px blue dashed; */
+}
+
+.output-active {
+    border: 1px blue dashed;
 }
