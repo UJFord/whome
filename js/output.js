@@ -1,15 +1,14 @@
-
-export function validateCmd(args) {
+export function ValidateCmd(args) {
     args = args.split(/\s+/)
 
     switch (args[1]) {
         case "draw":
             console.log("drawing...")
-            drawOutput(args)
+            DrawOutput(args)
     }
 }
 
-export function drawOutput(args) {
+export function DrawOutput(args) {
     let newOutput = document.createElement("div")
     newOutput.classList.add("output-active")
 

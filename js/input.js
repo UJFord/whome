@@ -1,6 +1,4 @@
-import { validateCmd } from "./output.js"
-
-export function createInput(templateInput) {
+export function CreateInput(templateInput) {
     let active = document.querySelector(".input-active")
     active.classList.remove("input-active", "active-border")
     active.removeAttribute("contenteditable")
@@ -27,13 +25,14 @@ export function createInput(templateInput) {
     let terminal = document.querySelector(".terminal")
     terminal.appendChild(newCmd)
 
-    focusInput(inputTxt)
+    FocusInput(inputTxt)
     return currentInput
 }
 
 
-export function focusInput() {
+export function FocusInput() {
     let el = document.querySelector(".input-active")
+
     el.focus()
     let range = document.createRange()
     range.selectNodeContents(el)

@@ -1,5 +1,5 @@
-import { focusInput, createInput } from "./input.js";
-import { validateCmd } from "./output.js";
+import { FocusInput, CreateInput } from "./input.js";
+import { ValidateCmd } from "./output.js";
 
 // submit input
 window.addEventListener("keydown", function(event) {
@@ -7,22 +7,22 @@ window.addEventListener("keydown", function(event) {
         // prevent newline by default
         event.preventDefault()
 
-        let input = createInput()
-        validateCmd(input)
+        let input = CreateInput()
+        ValidateCmd(input)
     }
 })
 
 // focus input on load
 window.addEventListener("load", function() {
-    createInput()
+    CreateInput()
 })
 
 // focus input on click
 let terminalContainer = document.querySelector(".terminal-container")
-terminalContainer.addEventListener("click", focusInput())
+terminalContainer.addEventListener("click", FocusInput())
 
 let terminal = document.querySelector(".terminal")
-terminal.addEventListener("click", focusInput())
+terminal.addEventListener("click", FocusInput())
 
 let inputCmd = document.querySelector(".input-cmd")
-inputCmd.addEventListener("click", focusInput())
+inputCmd.addEventListener("click", FocusInput())
