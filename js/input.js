@@ -1,10 +1,6 @@
-export function CreateInput(templateInput) {
-    let active = document.querySelector(".input-active")
-    active.classList.remove("input-active", "active-border")
-    active.removeAttribute("contenteditable")
-    active.removeAttribute("spellcheck")
+import { ValidateCmd } from "./output.js"
 
-    let currentInput = active.textContent.toString()
+export function CreateInput(templateInput) {
 
     let newCmd = document.createElement("div")
     newCmd.classList.add("input-cmd",)
@@ -25,8 +21,7 @@ export function CreateInput(templateInput) {
     let terminal = document.querySelector(".terminal")
     terminal.appendChild(newCmd)
 
-    FocusInput(inputTxt)
-    return currentInput
+    FocusInput()
 }
 
 
@@ -41,4 +36,15 @@ export function FocusInput() {
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+}
+
+export function GetInput() {
+
+    let active = document.querySelector(".input-active")
+    active.classList.remove("input-active", "active-border")
+    active.removeAttribute("contenteditable")
+    active.removeAttribute("spellcheck")
+
+    let args = active.textContent.toString()
+    return args
 }

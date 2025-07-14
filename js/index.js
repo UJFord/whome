@@ -1,5 +1,10 @@
-import { FocusInput, CreateInput } from "./input.js";
+import { FocusInput, CreateInput, GetInput } from "./input.js";
 import { ValidateCmd } from "./output.js";
+
+// focus input on load
+window.addEventListener("load", function() {
+    FocusInput()
+})
 
 // submit input
 window.addEventListener("keydown", function(event) {
@@ -7,14 +12,10 @@ window.addEventListener("keydown", function(event) {
         // prevent newline by default
         event.preventDefault()
 
-        let input = CreateInput()
+        let input = GetInput()
         ValidateCmd(input)
+        CreateInput()
     }
-})
-
-// focus input on load
-window.addEventListener("load", function() {
-    CreateInput()
 })
 
 // focus input on click
