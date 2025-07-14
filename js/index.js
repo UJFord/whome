@@ -1,29 +1,23 @@
-import { newInput } from "./newInput";
-let currentInput = "";
+import { focusInput, createInput } from "./input.js";
+import { validateCmd } from "./output.js";
 
-// focus into input-able element on startup
-window.addEventListener("load", function () {
-    // let repeatCount = 50
-    // for (let i = 0; i < repeatCount; i++) {
-    //     setTimeout(() => {
-    //         newInput("testing")
-    //     }, (100 * (i + 1))
-    //     )
-    // }
-    newInput()
+// submit input
+window.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        // prevent newline by default
+        event.preventDefault()
+
+        let input = createInput()
+        validateCmd(input)
+    }
 })
 
-function focusInput(el) {
-    el.focus()
-    let range = document.createRange()
-    range.selectNodeContents(el)
-    range.collapse(false)
+// focus input on load
+window.addEventListener("load", function () {
+    createInput()
+})
 
-    let sel = window.getSelection()
-    sel.removeAllRanges()
-    sel.addRange(range)
-}
-
+// focus input on click
 let terminalContainer = document.querySelector(".terminal-container")
 terminalContainer.addEventListener("click", function () {
     let inputActive = document.querySelector(".input-active")
@@ -41,25 +35,3 @@ inputCmd.addEventListener("click", function () {
     let inputActive = document.querySelector(".input-active")
     focusInput(inputActive)
 })
-
-window.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        // prevent new line by default
-        event.preventDefault()
-        newInput()
-    }
-})
-
-function validateCmd(args) {
-    // drawOutput(args)
-    let newOutput = document.createElement("div")
-    newOutput.classList.add("output-active")
-
-    let terminal = this.document.querySelector(".terminal")
-    terminal.appendChild(newOutput)
-}
-
-// function drawOutput(output){
-//     console.log(output)
-
-// }
