@@ -31,7 +31,9 @@ export function createInput(templateInput) {
     return currentInput
 }
 
-export function focusInput(el) {
+
+export function focusInput() {
+    let el = document.querySelector(".input-active")
     el.focus()
     let range = document.createRange()
     range.selectNodeContents(el)
