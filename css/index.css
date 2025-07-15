@@ -13,7 +13,6 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    /* font-size: 1.5rem; */
 }
 
 .terminal-container {
@@ -89,7 +88,6 @@ body {
 }
 
 .terminal::-webkit-scrollbar-track {
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
     background-color: transparent;
     border-radius: 10px;
 }
@@ -123,7 +121,6 @@ body {
 .caret {
     margin-right: .5rem;
     flex-grow: auto;
-    /* border: 2px blue dashed; */
 }
 
 .input-txt {

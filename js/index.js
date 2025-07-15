@@ -2,28 +2,33 @@ import { FocusInput, GetInput } from "./input.js";
 import { ValidateCmd } from "./output.js";
 
 // focus input on load
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     FocusInput()
 })
 
 // submit input
-window.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        // prevent newline by default
-        event.preventDefault()
+window.addEventListener("keydown", function (event) {
 
-        let input = GetInput()
-        ValidateCmd(input)
-    }
+    // prevent newline by default
 
-    if(event.key === 'Tab'){
-        event.preventDefault()
+    switch (event.key) {
+        case "Enter":
+            event.preventDefault()
+            let input = GetInput()
+            ValidateCmd(input)
+            break;
+        default:
+        //     let activeInput = document.querySelector(".input-active")
+        //     let isFocused = document.activeElement === activeInput
+        //     if (!isFocused) {
+        //         FocusInput(event.key)
+        //     }
     }
 })
 
 // can't import from a FocusInput
 // I dont know why it won't work
-window.addEventListener("click", ()=>{
+window.addEventListener("click", () => {
     let el = document.querySelector(".input-active")
 
     el.focus()
@@ -34,12 +39,13 @@ window.addEventListener("click", ()=>{
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+
+    let terminal = document.querySelector(".terminal")
+    terminal.scrollTop = terminal.scrollHeight
 })
 
-document.addEventListener("click", FocusInput())
-
 let terminalContainer = document.querySelector(".terminal-container")
-terminalContainer.addEventListener("click", ()=>{
+terminalContainer.addEventListener("click", () => {
     let el = document.querySelector(".input-active")
 
     el.focus()
@@ -50,10 +56,13 @@ terminalContainer.addEventListener("click", ()=>{
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+
+    let terminal = document.querySelector(".terminal")
+    terminal.scrollTop = terminal.scrollHeight
 })
 
 let terminal = document.querySelector(".terminal")
-terminal.addEventListener("click", ()=>{
+terminal.addEventListener("click", () => {
     let el = document.querySelector(".input-active")
 
     el.focus()
@@ -64,10 +73,13 @@ terminal.addEventListener("click", ()=>{
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+
+    let terminal = document.querySelector(".terminal")
+    terminal.scrollTop = terminal.scrollHeight
 })
 
 let inputCmd = document.querySelector(".input-cmd")
-inputCmd.addEventListener("click", ()=>{
+inputCmd.addEventListener("click", () => {
     let el = document.querySelector(".input-active")
 
     el.focus()
@@ -78,4 +90,7 @@ inputCmd.addEventListener("click", ()=>{
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+
+    let terminal = document.querySelector(".terminal")
+    terminal.scrollTop = terminal.scrollHeight
 })

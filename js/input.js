@@ -23,8 +23,11 @@ export function CreateInput(templateInput) {
 }
 
 
-export function FocusInput() {
+export function FocusInput(keyPressed) {
     let el = document.querySelector(".input-active")
+    // if (keyPressed) {
+    //     el.textContent += keyPressed
+    // }
 
     el.focus()
     let range = document.createRange()
@@ -34,6 +37,9 @@ export function FocusInput() {
     let sel = window.getSelection()
     sel.removeAllRanges()
     sel.addRange(range)
+
+    let terminal = document.querySelector(".terminal")
+    terminal.scrollTop = terminal.scrollHeight
 }
 
 export function GetInput() {
