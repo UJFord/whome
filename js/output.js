@@ -5,6 +5,7 @@ export function ValidateCmd(args) {
         case "draw":
             console.log("drawing...")
             DrawOutput(args)
+            break;
         default:
             DrawOutput(args)
     }
