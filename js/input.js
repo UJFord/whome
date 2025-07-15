@@ -10,7 +10,7 @@ export function CreateInput(templateInput) {
     newCmd.appendChild(caret)
 
     let inputTxt = document.createElement("div")
-    inputTxt.classList.add("active-border", "input-active")
+    inputTxt.classList.add("active-border", "input-active", "input-txt")
     inputTxt.setAttribute("contenteditable", "true")
     inputTxt.textContent = templateInput
     newCmd.appendChild(inputTxt)

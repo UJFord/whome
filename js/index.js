@@ -1,4 +1,4 @@
-import { FocusInput, CreateInput, GetInput } from "./input.js";
+import { FocusInput, GetInput } from "./input.js";
 import { ValidateCmd } from "./output.js";
 
 // focus input on load
@@ -21,12 +21,61 @@ window.addEventListener("keydown", function(event) {
     }
 })
 
-// focus input on click
+// can't import from a FocusInput
+// I dont know why it won't work
+window.addEventListener("click", ()=>{
+    let el = document.querySelector(".input-active")
+
+    el.focus()
+    let range = document.createRange()
+    range.selectNodeContents(el)
+    range.collapse(false)
+
+    let sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+})
+
+document.addEventListener("click", FocusInput())
+
 let terminalContainer = document.querySelector(".terminal-container")
-terminalContainer.addEventListener("click", FocusInput())
+terminalContainer.addEventListener("click", ()=>{
+    let el = document.querySelector(".input-active")
+
+    el.focus()
+    let range = document.createRange()
+    range.selectNodeContents(el)
+    range.collapse(false)
+
+    let sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+})
 
 let terminal = document.querySelector(".terminal")
-terminal.addEventListener("click", FocusInput())
+terminal.addEventListener("click", ()=>{
+    let el = document.querySelector(".input-active")
+
+    el.focus()
+    let range = document.createRange()
+    range.selectNodeContents(el)
+    range.collapse(false)
+
+    let sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+})
 
 let inputCmd = document.querySelector(".input-cmd")
-inputCmd.addEventListener("click", FocusInput())
+inputCmd.addEventListener("click", ()=>{
+    let el = document.querySelector(".input-active")
+
+    el.focus()
+    let range = document.createRange()
+    range.selectNodeContents(el)
+    range.collapse(false)
+
+    let sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+})
