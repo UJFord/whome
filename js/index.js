@@ -14,7 +14,10 @@ window.addEventListener("keydown", function(event) {
 
         let input = GetInput()
         ValidateCmd(input)
-        CreateInput()
+    }
+
+    if(event.key === 'Tab'){
+        event.preventDefault()
     }
 })
 

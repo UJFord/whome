@@ -1,5 +1,3 @@
-import { ValidateCmd } from "./output.js"
-
 export function CreateInput(templateInput) {
 
     let newCmd = document.createElement("div")

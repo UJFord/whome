@@ -111,7 +111,7 @@ body {
 }
 
 .active-border {
-    border: 2px red dashed;
+    border: 0.1rem #ff4b4b dashed;
 }
 
 .input-cmd {
@@ -132,6 +132,9 @@ body {
     /* border: 2px blue dashed; */
 }
 
+.output{
+    margin-bottom: 0.5rem;
+}
 .output-active {
-    border: 1px blue dashed;
+    border: 0.1rem cyan dashed;
 }
